@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Information</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7fb;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        /* Info Box */
+        .info {
+            margin-bottom: 40px;
+        }
+
+        .info div {
+            background-color: #fafafa;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .info div span {
+            font-weight: 600;
+            color: #007bff;
+        }
+
+        .info div span:last-child {
+            color: #333;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .action-buttons a {
+            padding: 12px 25px;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            text-align: center;
+            min-width: 150px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .action-buttons a:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+        }
+
+        .action-buttons a:active {
+            transform: translateY(1px);
+        }
+
+        /* Footer link */
+        a {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #007bff;
+            font-size: 16px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Account Information</h1>
+        <div class="info">
+            <div>
+                <span>Account Number:</span> {{ accNo }}
+            </div>
+            <div>
+                <span>Name:</span> {{ name }}
+            </div>
+            <div>
+                <span>Account Type:</span> {{ type }}
+            </div>
+            <div>
+                <span>Balance:</span> ${{ deposit }}
+            </div>
+        </div>
+
+        <!-- Action Buttons for Deposit, Withdraw, Delete Account -->
+        <div class="action-buttons">
+            <a href="/deposit_form/{{ accNo }}">Deposit</a>
+            <a href="/withdraw_form/{{ accNo }}">Withdraw</a>
+            <a href="/delete_account/{{ accNo }}">Delete Account</a>
+        </div>
+
+    </div>
+</body>
+
+</html>

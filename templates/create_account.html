@@ -1,0 +1,79 @@
+<!-- create_account.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            color: #555;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            margin-top: 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Create Account</h1>
+        <form method="POST" action="/create_account">
+            <label for="accNo">Account Number:</label>
+            <input type="number" id="accNo" name="accNo" required>
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="deposit">Initial Deposit:</label>
+            <input type="number" id="deposit" name="deposit" required>
+
+            <label for="type">Account Type:</label>
+            <select id="type" name="type" required>
+                <option value="">Select Type</option>
+                <option value="Savings">Savings</option>
+                <option value="Current">Current</option>
+            </select>
+
+            <button type="submit">Create Account</button>
+        </form>
+    </div>
+</body>
+</html>
