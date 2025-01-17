@@ -1,4 +1,3 @@
-<!-- create_account.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,33 +49,78 @@
         button:hover {
             background-color: #0056b3;
         }
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Create Account</h1>
         <form method="POST" action="/create_account">
-            <label for="accNo">Account Number:</label>
-            <input type="number" id="accNo" name="accNo" required>
+
+            
+            <label for="role">Role:</label>
+            <select id="role" name="role" required>
+                <option value="">Select Role</option>
+                <option value="Customer" selected>Customer</option>
+                <option value="Admin">Admin</option>
+            </select>
 
             <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+            <input type="text" id="name" name="name" value="John Doe" required>
             
-            <label for="email">email:</label>
-            <input type="email" id="email" name="email" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="john.doe@example.com" required>
 
-            <label for="deposit">Initial Deposit:</label>
-            <input type="number" id="deposit" name="deposit" required>
+            <!-- Fields to toggle -->
+            <div id="customerFields">
+                <label for="accNo">Account Number:</label>
+                <input type="number" id="accNo" name="accNo" value="123456">
 
-            <label for="type">Account Type:</label>
-            <select id="type" name="type" required>
-                <option value="">Select Type</option>
-                <option value="Savings">Savings</option>
-                <option value="Current">Current</option>
-            </select>
+                <label for="deposit">Initial Deposit:</label>
+                <input type="number" id="deposit" name="deposit" value="5000">
+
+                <label for="type">Account Type:</label>
+                <select id="type" name="type">
+                    <option value="">Select Type</option>
+                    <option value="Savings" selected>Savings</option>
+                    <option value="Current">Current</option>
+                </select>
+            </div>
+
 
             <button type="submit">Create Account</button>
         </form>
     </div>
+
+    <script>
+        const roleSelect = document.getElementById('role');
+        const customerFields = document.getElementById('customerFields');
+        const accountFields = ['accNo', 'deposit', 'type'];
+
+        // Function to toggle visibility and disable customer-specific fields
+        function toggleFields() {
+            if (roleSelect.value === 'Admin') {
+                customerFields.classList.add('hidden');
+                // Disable the fields so they are not submitted
+                accountFields.forEach(field => {
+                    document.getElementById(field).disabled = true;
+                });
+            } else {
+                customerFields.classList.remove('hidden');
+                // Enable the fields for Customer role
+                accountFields.forEach(field => {
+                    document.getElementById(field).disabled = false;
+                });
+            }
+        }
+
+        // Add event listener for changes in the role dropdown
+        roleSelect.addEventListener('change', toggleFields);
+
+        // Initialize visibility on page load
+        toggleFields();
+    </script>
 </body>
 </html>
